@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 10pt;
+    color: #1a1a1a;
+    background: #f0f0f5;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 32px 16px;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 800px;
+    padding: 0;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+
+  /* HEADER */
+  .header {
+    background: #0f0f1a;
+    padding: 28px 36px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-left { display: flex; align-items: center; gap: 14px; }
+  .logo-box {
+    width: 44px; height: 44px;
+    background: #2a2a4a;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7pt; font-weight: 500; color: #fff;
+    letter-spacing: 0.3px;
+    text-align: center;
+    line-height: 1.2;
+    padding: 4px;
+  }
+  .company-name { font-size: 14pt; font-weight: 500; color: #ffffff; }
+  .company-sub { font-size: 8pt; color: #8888aa; margin-top: 2px; }
+  .header-right { text-align: right; }
+  .role-title { font-size: 18pt; font-weight: 700; color: #ffffff; line-height: 1.2; }
+  .role-sub { font-size: 8.5pt; color: #aaaacc; margin-top: 4px; }
+
+  /* BADGE ROW */
+  .badge-row {
+    background: #f7f7fb;
+    border-bottom: 0.5px solid #e5e5ee;
+    padding: 10px 36px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .badge {
+    font-size: 7.5pt;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .badge svg { width: 11px; height: 11px; }
+  .b-blue { background: #dbeafe; color: #1d4ed8; }
+  .b-green { background: #d1fae5; color: #065f46; }
+  .b-amber { background: #fef3c7; color: #92400e; }
+  .b-gray { background: #f3f4f6; color: #374151; }
+
+  /* BODY */
+  .body { padding: 24px 36px; }
+
+  /* SECTION */
+  .section { margin-bottom: 22px; }
+  .section-label {
+    font-size: 7pt;
+    font-weight: 500;
+    color: #888899;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 8px;
+  }
+
+  /* POST CONTENT */
+  .post-intro {
+    font-size: 9.5pt;
+    color: #2d2d3a;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .post-heading {
+    font-size: 10.5pt;
+    font-weight: 500;
+    color: #0f0f1a;
+    margin: 14px 0 6px;
+  }
+  .bullet-list { list-style: none; padding: 0; margin: 0 0 8px; }
+  .bullet-list li {
+    font-size: 9pt;
+    color: #2d2d3a;
+    padding: 2.5px 0 2.5px 14px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #6366f1;
+  }
+
+  .divider {
+    border: none;
+    border-top: 0.5px solid #e5e5ee;
+    margin: 18px 0;
+  }
+
+  /* INFO GRID */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .info-card {
+    background: #f7f7fb;
+    border-radius: 8px;
+    padding: 10px 12px;
+    border: 0.5px solid #e5e5ee;
+  }
+  .info-card .ic-label {
+    font-size: 7pt;
+    color: #888899;
+    margin-bottom: 3px;
+  }
+  .info-card .ic-val {
+    font-size: 9pt;
+    font-weight: 500;
+    color: #0f0f1a;
+  }
+
+  /* PERKS */
+  .perks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .perk-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 8.5pt;
+    color: #2d2d3a;
+    line-height: 1.5;
+  }
+  .perk-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    color: #10b981;
+  }
+  .perk-icon svg { width: 14px; height: 14px; }
+
+  /* CULTURE BOX */
+  .culture-box {
+    background: #f0f0ff;
+    border-left: 3px solid #6366f1;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    margin: 0;
+  }
+  .culture-box p {
+    font-size: 9pt;
+    color: #2d2d3a;
+    line-height: 1.65;
+  }
+  .culture-box strong { font-weight: 500; color: #0f0f1a; }
+
+  /* APPLY FOOTER */
+  .footer {
+    background: #0f0f1a;
+    padding: 16px 36px;
+    margin-top: 8px;
+  }
+  .footer p { font-size: 8.5pt; color: #aaaacc; }
+  .footer strong { color: #ffffff; font-weight: 500; }
+  .hashtags { font-size: 7.5pt; color: #6666aa; margin-top: 6px; }
+
+  /* ACCENT LINE */
+  .accent { color: #6366f1; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo-box">Fresh<br>ive</div>
+      <div>
+        <div class="company-name">Freshive Digital</div>
+        <div class="company-sub">Part of OMD &middot; Sandton, Gauteng</div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="role-title">Junior Paid<br>Campaign Manager</div>
+      <div class="role-sub">2 Positions Available &nbsp;&middot;&nbsp; Full-time / Permanent</div>
+    </div>
+  </div>
+
+  <!-- BADGES -->
+  <div class="badge-row">
+    <span class="badge b-blue">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+      Junior level
+    </span>
+    <span class="badge b-green">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Hybrid, 2 days remote
+    </span>
+    <span class="badge b-amber">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      2 openings
+    </span>
+    <span class="badge b-gray">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Sandton &middot; Johannesburg
+    </span>
+    <span class="badge b-gray">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      08h30 &ndash; 17h30 &middot; Mon to Fri
+    </span>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- POST SECTION -->
+    <div class="section">
+      <div class="section-label">LinkedIn post</div>
+      <p class="post-intro">
+        Freshive Digital, part of the OMD network, is looking for two driven Junior Paid Campaign Managers
+        to join our growing media team in Sandton.<br><br>
+        If you are someone who gets excited by data, loves the craft of building campaigns that actually convert,
+        and wants to grow inside one of South Africa's sharpest agency environments, this role was built for you.
+      </p>
+    </div>
+
+    <!-- RESPONSIBILITIES -->
+    <div class="section">
+      <div class="post-heading">What you'll be doing</div>
+      <ul class="bullet-list">
+        <li>Building and managing paid advertising campaigns on Meta platforms</li>
+        <li>Crafting audience strategies and executing targeted ad launches</li>
+        <li>Running A/B tests on creatives, copy, and targeting</li>
+        <li>Monitoring performance metrics and translating them into clear optimisations</li>
+        <li>Managing budgets and bid strategies with a focus on ROI</li>
+        <li>Implementing retargeting strategies to drive conversions</li>
+        <li>Delivering data-driven performance reports to stakeholders</li>
+        <li>Staying ahead of platform updates, policy changes, and new ad tools</li>
+        <li>Ensuring all campaigns comply with Meta advertising policies</li>
+      </ul>
+    </div>
+
+    <!-- WHAT WE LOOK FOR -->
+    <div class="section">
+      <div class="post-heading">What we're looking for</div>
+      <ul class="bullet-list">
+        <li>Sharp thinker with a hunger to learn</li>
+        <li>Comfortable with numbers and excited by performance data</li>
+        <li>Eager to grow into media buying and campaign management</li>
+        <li>Bonus: any prior exposure to Meta Ads Manager</li>
+      </ul>
+    </div>
+
+    <hr class="divider">
+
+    <!-- ROLE DETAILS GRID -->
+    <div class="section">
+      <div class="section-label">Role details</div>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="ic-label">Department</div>
+          <div class="ic-val">Media / Paid</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Contract type</div>
+          <div class="ic-val">Permanent</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Working hours</div>
+          <div class="ic-val">08h30 &ndash; 17h30</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Positions open</div>
+          <div class="ic-val">2 openings</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Remote days</div>
+          <div class="ic-val">2 of 5 days</div>
+        </div>
+        <div class="info-card">
+          <div class="ic-label">Network</div>
+          <div class="ic-val">OMD Group</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- BENEFITS -->
+    <div class="section">
+      <div class="section-label">Benefits</div>
+      <div class="perks-grid">
+        <div class="perk-item">
+          <span class="perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
+          <span>15 days paid annual leave per year</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+          <span>30 days paid sick leave per 36-month cycle</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span>3 days family responsibility leave (after 4 months)</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg></span>
+          <span>3 months maternity leave / 10 days paternity</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+          <span>Hybrid working, 2 remote days per week</span>
+        </div>
+        <div class="perk-item">
+          <span class="perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+          <span>Award-winning agency culture and elite team</span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- CULTURE -->
+    <div class="section">
+      <div class="section-label">What makes Freshive different</div>
+      <div class="culture-box">
+        <p>We don't do average. It's genuinely not in our vocabulary. You'll be part of an elite, like-minded team where your contributions are felt, not lost in a corporate machine. <strong>Creative office culture. Real accountability. Award-winning ambitions.</strong> Here, you are not just another number.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><strong>Ready to apply?</strong> Send your CV and portfolio to <strong>shammah@freshive.co.za</strong> or apply via the link in the post.</p>
+    <div class="hashtags">#PaidMedia &nbsp; #MetaAds &nbsp; #DigitalMarketing &nbsp; #FreshiveDigital &nbsp; #OMD &nbsp; #Hiring &nbsp; #JuniorCampaignManager &nbsp; #Sandton &nbsp; #PerformanceMarketing</div>
+  </div>
+
+</div>
+</body>
+</html>
